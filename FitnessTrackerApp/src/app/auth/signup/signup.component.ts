@@ -7,14 +7,13 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit {
-
   constructor() { }
 
   ngOnInit(): void {
+
   }
 
   onSubmit(form: NgForm){
     console.log(form);
-    form.reset();
   }
 }
