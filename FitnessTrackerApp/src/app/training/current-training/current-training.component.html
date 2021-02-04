@@ -1,1 +1,9 @@
-<p>current-training works!</p>
+<section class="currentTraining" fxLayout="column" fxLayoutAlign="center center">
+  <mat-progress-spinner mode="determinate" [value]="progress"></mat-progress-spinner>
+  <h1>{{progress}} %</h1>
+  <mat-dialog-content>
+    <p>You reached {{progress}} %</p>
+  </mat-dialog-content>
+  <p>Keep going, you got this!</p>
+  <button type="button" mat-raised-button color="accent" (click)="onStop()">Stop</button>
+</section>
