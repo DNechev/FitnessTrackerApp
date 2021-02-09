@@ -9,7 +9,6 @@ import { StopTrainning } from './stop-training.component';
   styleUrls: ['./current-training.component.css']
 })
 export class CurrentTrainingComponent implements OnInit {
-  @Output()exitTraining = new EventEmitter();
   progress: number = 0;
   timer: number;
 
@@ -31,7 +30,7 @@ export class CurrentTrainingComponent implements OnInit {
       if(!result) {
         this.startOrResumeTimer();
       } else {
-        this.exitTraining.emit();
+        this.trainingService.cancelExercise(this.progress);
       }
     });
   }
@@ -43,6 +42,7 @@ export class CurrentTrainingComponent implements OnInit {
     this.timer = setInterval(() => {
       this.progress = this.progress + 1;
       if(this.progress >= 100) {
+        this.trainingService.completeExercise();
         clearInterval(this.timer);
       }
     }, step)
