@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Exercise } from '../training.model';
 import { TrainingService } from '../training.service';
 
@@ -16,7 +17,7 @@ export class NewTrainingComponent implements OnInit {
     this.exercises = this.trainingService.getExercises();
   }
 
-  onStart(selectedId: any) {
-    this.trainingService.startExercise(selectedId);
+  onStart(form: NgForm) {
+    this.trainingService.startExercise(form.value.selected);
   }
 }

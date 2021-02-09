@@ -25,4 +25,8 @@ export class TrainingService {
     console.log('running exercise from service: ' + this.runningExercise.name)
     this.trainingStart.next({...this.runningExercise});
   }
+
+  getRunningExercise(): Exercise {
+    return {...this.runningExercise};
+  }
 }
