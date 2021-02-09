@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "fitness-tracker-32b24": {
+      "hosting": {
+        "FitnessTrackerApp": [
+          "fitness-tracker-32b24"
+        ]
+      }
+    }
+  }
+}
