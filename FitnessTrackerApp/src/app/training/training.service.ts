@@ -38,6 +38,10 @@ export class TrainingService {
       this.availableExercises = exercises;
       this.exercisesChanged.next(...[this.availableExercises]);
       this.uiService.loadingStateChanged.next(false);
+    }, error => {
+      this.uiService.showSnackbar('Could not fetch exercises, please reload the page.', null, 3000);
+      this.exercisesChanged.next(null);
+      this.uiService.loadingStateChanged.next(false);
     })
     );
   }
