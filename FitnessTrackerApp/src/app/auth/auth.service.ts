@@ -4,7 +4,6 @@ import { Subject } from "rxjs";
 import { Router } from "@angular/router";
 import { AngularFireAuth } from '@angular/fire/auth';
 import { TrainingService } from "../training/training.service";
-import { MatSnackBar } from "@angular/material/snack-bar";
 import { UiService } from "../shared/ui.service";
 
 
@@ -15,8 +14,10 @@ export class AuthService {
   private isAuthenticated: boolean = false;
   authChange = new Subject<boolean>();
 
-  constructor(private router: Router, private auth: AngularFireAuth, private uiService: UiService,
-              private trainingsService: TrainingService, private snackbar: MatSnackBar) {}
+  constructor(private router: Router,
+              private auth: AngularFireAuth,
+              private uiService: UiService,
+              private trainingsService: TrainingService) {}
 
   initAuthListener() {
     this.auth.authState.subscribe(user => {
@@ -41,9 +42,7 @@ export class AuthService {
     })
     .catch(err => {
       this.uiService.loadingStateChanged.next(false);
-      this.snackbar.open(err.message, null, {
-        duration: 3000
-      });
+      this.uiService.showSnackbar(err.message, null, 3000);
     });
   }
 
@@ -55,9 +54,7 @@ export class AuthService {
     })
     .catch(err => {
       this.uiService.loadingStateChanged.next(false);
-      this.snackbar.open(err.message, null, {
-        duration: 3000
-      });
+      this.uiService.showSnackbar(err.message, null, 3000);
     });
   }
 
@@ -73,6 +70,6 @@ export class AuthService {
   private navigateTo(route: string) {
     this.router.navigate([
       route
-    ])
+    ]);
   }
 }
