@@ -21,8 +21,8 @@
       required
       minlength="6"
       #passInput="ngModel">
-      <mat-hint align="start">Password should be at least 6 symbols long!</mat-hint>
-      <mat-hint align="end">{{ passInput.value?.lenght }} / 6</mat-hint>
+      <mat-hint align="start">Password should be at least 6 symbols long.</mat-hint>
+      <!-- <mat-hint align="end">{{passInput.value?.lenght}} / 6</mat-hint> -->
       <mat-error>Password has to be at least 6 symbols long</mat-error>
     </mat-form-field>
     <mat-form-field>
@@ -32,6 +32,7 @@
       <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
     <mat-checkbox #termsCb ngModel name="agreedToTerms" color="primary" required>I accept the terms and conditions...</mat-checkbox>
-    <button type="submit" mat-raised-button color="primary" [disabled]="!f.valid">Submit</button>
+    <button *ngIf="!isLoading" type="submit" mat-raised-button color="primary" [disabled]="!f.valid">Submit</button>
+    <mat-spinner [diameter]="50" *ngIf="isLoading"></mat-spinner>
   </form>
 </section>
