@@ -10,7 +10,6 @@ import { SidenavListComponent } from './navigation/sidenav-list/sidenav-list.com
 import { AngularFireModule } from '@angular/fire';
 import { environment } from 'src/environments/environment';
 import { AuthModule } from './auth/auth.module';
-import { TrainingModule } from './training/training.module';
 import { SharedModule } from './shared/shared.module';
 
 @NgModule({
@@ -26,8 +25,7 @@ import { SharedModule } from './shared/shared.module';
     AppRoutingModule,
     SharedModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AuthModule,
-    TrainingModule
+    AuthModule
   ],
   providers: [],
   bootstrap: [AppComponent]
