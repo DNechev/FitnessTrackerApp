@@ -17,9 +17,6 @@ import { SignupComponent } from "./signup/signup.component";
     ReactiveFormsModule,
     MaterialModule,
     FlexLayoutModule
-  ],
-  exports: [
-
   ]
 })
 export class AuthModule{}
