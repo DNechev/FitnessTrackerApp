@@ -30,7 +30,9 @@ export class NewTrainingComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.subs.forEach(sub => sub.unsubscribe());
+    if(this.subs) {
+      this.subs.forEach(sub => sub.unsubscribe());
+    }
   }
 
   onStart(form: NgForm) {
