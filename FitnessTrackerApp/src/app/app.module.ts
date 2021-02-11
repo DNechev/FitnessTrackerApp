@@ -11,7 +11,6 @@ import { HeaderComponent } from './navigation/header/header.component';
 import { SidenavListComponent } from './navigation/sidenav-list/sidenav-list.component';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from 'src/environments/environment';
-import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AuthModule } from './auth/auth.module';
 import { TrainingModule } from './training/training.module';
 
@@ -29,7 +28,6 @@ import { TrainingModule } from './training/training.module';
     FlexLayoutModule,
     MaterialModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFireAuthModule,
     AuthModule,
     TrainingModule
   ],
