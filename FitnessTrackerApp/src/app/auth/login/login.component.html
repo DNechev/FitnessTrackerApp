@@ -18,7 +18,7 @@
       <mat-hint align="start">Enter a valid password</mat-hint>
       <mat-error>Invalid password</mat-error>
     </mat-form-field>
-    <button *ngIf="!isLoading" type="submit" mat-raised-button color="primary" [disabled]="!loginForm.valid">Submit</button>
-    <mat-spinner [diameter]="50" *ngIf="isLoading"></mat-spinner>
+    <button *ngIf="!(isLoading$ | async)" type="submit" mat-raised-button color="primary" [disabled]="!loginForm.valid">Submit</button>
+    <mat-spinner [diameter]="50" *ngIf="isLoading$ | async"></mat-spinner>
   </form>
 </section>
