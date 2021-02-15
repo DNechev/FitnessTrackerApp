@@ -3,7 +3,6 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { AuthService } from '../auth.service';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
 import * as fromApp from '../../app.reducer'
 
 @Component({
@@ -20,12 +19,12 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     this.isLoading$ = this.store.select(fromApp.getIsLoading);
     this.loginForm = new FormGroup({
-      email: new FormControl('', { validators: [Validators.required, Validators.email]}),
-      password: new FormControl('', { validators: [ Validators.required ]})
+      email: new FormControl('', { validators: [Validators.required, Validators.email] }),
+      password: new FormControl('', { validators: [Validators.required] })
     });
   }
 
-  onSubmit(){
+  onSubmit() {
     this.authService.login({
       email: this.loginForm.value.email,
       password: this.loginForm.value.password
