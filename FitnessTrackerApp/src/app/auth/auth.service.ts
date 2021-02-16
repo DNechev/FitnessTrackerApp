@@ -24,8 +24,8 @@ export class AuthService {
         this.store.dispatch(new authActions.SetAuth());
         this.navigateTo('/training');
       } else {
-        this.store.dispatch(new authActions.SetUnauth());
         this.navigateTo('/login');
+        this.store.dispatch(new authActions.SetUnauth());
       }
     })
   }
@@ -55,8 +55,8 @@ export class AuthService {
   }
 
   logout() {
-    this.auth.signOut();
     this.initAuthListener();
+    this.auth.signOut();
   }
 
   private navigateTo(route: string) {

@@ -1,32 +1,19 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
-import { TrainingService } from './training.service';
+import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import * as fromTraining from './training.reducer';
 
 @Component({
   selector: 'app-training',
   templateUrl: './training.component.html',
   styleUrls: ['./training.component.css']
 })
-export class TrainingComponent implements OnInit, OnDestroy {
-  ongoingTraining: boolean = false;
-  private sub: Subscription;
+export class TrainingComponent implements OnInit {
+  ongoingTraining$: Observable<boolean>;
 
-  constructor(private trainingService: TrainingService) { }
-
-  ngOnDestroy(): void {
-    if(this.sub) {
-      this.sub.unsubscribe();
-    }
-  }
+  constructor(private store: Store<fromTraining.TrainingState>) { }
 
   ngOnInit(): void {
-    this.sub = this.trainingService.exerciseChange.subscribe(exercise => {
-      if(exercise) {
-        this.ongoingTraining = true;
-      } else {
-        this.ongoingTraining = false;
-      }
-    })
+    this.ongoingTraining$ = this.store.select(fromTraining.isTrainingActive);
   }
-
 }
